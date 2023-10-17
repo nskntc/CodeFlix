@@ -1,4 +1,4 @@
-module github.com/nskntc/CodeFlix
+module github.com/nskntc/CodePix
 
 go 1.15
 
