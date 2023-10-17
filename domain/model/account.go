@@ -38,10 +38,12 @@ func NewAccount(bank *Bank, number string, ownerName string) (*Account, error) {
 
 	account.ID = uuid.NewV4().String()
 	account.CreatedAt = time.Now()
+	account.UpdatedAt = account.CreatedAt
 
 	err := account.isValid()
 	if err != nil {
 		return nil, err
 	}
+
 	return &account, nil
 }
