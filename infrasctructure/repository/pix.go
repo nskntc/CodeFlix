@@ -2,7 +2,7 @@ package repository
 
 import (
 	"fmt"
-	"github.com/nskntc/CodePix/tree/master/domain/model"
+	"github.com/nskntc/CodePix/domain/model"
 	"github.com/jinzhu/gorm"
 )
 

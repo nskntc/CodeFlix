@@ -1,7 +1,7 @@
 package db
 
 import (
-	"github.com/nskntc/CodePix/tree/master/domain/model"
+	"github.com/nskntc/CodePix/domain/model"
 	"log"
 	"os"
 	"path/filepath"

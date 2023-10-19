@@ -1,7 +1,7 @@
 package usecase
 
 import (
-	"github.com/nskntc/CodePix/tree/master/domain/model"
+	"github.com/nskntc/CodePix/domain/model"
 )
 
 type PixUseCase struct {

@@ -2,9 +2,9 @@ package grpc
 
 import (
 	"fmt"
-	"github.com/codeedu/imersao/codepix-go/application/grpc/pb"
-	"github.com/codeedu/imersao/codepix-go/application/usecase"
-	"github.com/codeedu/imersao/codepix-go/infrastructure/repository"
+	"github.com/nskntc/CodePix/application/grpc/pb"
+	"github.com/nskntc/CodePix/application/usecase"
+	"github.com/nskntc/CodePix/infrasctructure/repository"
 	"github.com/jinzhu/gorm"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
