@@ -4,6 +4,7 @@ import (
 	"github.com/nskntc/CodePix/domain/model"
 	"log"
 	"os"
+	"fmt"
 	"path/filepath"
 	"runtime"
 
@@ -38,16 +39,22 @@ func ConnectDB(env string) *gorm.DB {
 	}
 
 	if err != nil {
+		fmt.Println("here0")
 		log.Fatalf("Error connecting to database: %v", err)
+		fmt.Println("here1")
 		panic(err)
 	}
 
 	if os.Getenv("debug") == "true" {
+		fmt.Println("here2")
 		db.LogMode(true)
+		fmt.Println("here3")
 	}
 
 	if os.Getenv("AutoMigrateDb") == "true" {
+		fmt.Println("here4")
 		db.AutoMigrate(&model.Bank{}, &model.Account{}, &model.PixKey{}, &model.Transaction{})
+		fmt.Println("here5")
 	}
 
 	return db
