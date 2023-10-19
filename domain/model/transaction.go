@@ -64,18 +64,7 @@ func (t *Transaction) isValid() error {
 func (t *Transaction) Complete() error {
 	t.Status = TransactionCompleted
 	t.UpdatedAt = time.Now()
-
 	err := t.isValid()
-
-	return err
-}
-
-func (t *Transaction) Confirm() error {
-	t.Status = TransactionConfirmed
-	t.UpdatedAt = time.Now()
-
-	err := t.isValid()
-
 	return err
 }
 
@@ -83,13 +72,11 @@ func (t *Transaction) Cancel(description string) error {
 	t.Status = TransactionError
 	t.CancelDescription = description
 	t.UpdatedAt = time.Now()
-
 	err := t.isValid()
-
 	return err
 }
 
-func NewTransaction(accountFrom *Account, amount float64, pixKeyTo *PixKey, description string) (*Transaction, error) {
+func NewTransaction(accountFrom *Account, amount float64, pixKeyTo *PixKey, description string, id string) (*Transaction, error) {
 	transaction := Transaction{
 		AccountFrom:   accountFrom,
 		AccountFromID: accountFrom.ID,
@@ -99,15 +86,15 @@ func NewTransaction(accountFrom *Account, amount float64, pixKeyTo *PixKey, desc
 		Status:        TransactionPending,
 		Description:   description,
 	}
-
-	transaction.ID = uuid.NewV4().String()
+	if id == "" {
+		transaction.ID = uuid.NewV4().String()
+	} else {
+		transaction.ID = id
+	}
 	transaction.CreatedAt = time.Now()
-	transaction.UpdatedAt = transaction.CreatedAt
-
 	err := transaction.isValid()
 	if err != nil {
 		return nil, err
 	}
-
 	return &transaction, nil
 }
